@@ -1,7 +1,7 @@
 import './app.css';
-import { Exchange } from './pages';
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { Exchange } from './pages/exchange';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
 import firebaseConfig from './utils/settings';
 
 const App = () => {

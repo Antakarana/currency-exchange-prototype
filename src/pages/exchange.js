@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import rocket from '../assets/images/rocket.png';
 import verticalArrow from '../assets/images/vertical-arrow.png';
-import { ComboBox, Input } from '../components';
+import { Button, ComboBox, Input, Title } from '../components';
 import { serviceConnectionConvertCurrencyAndAmount } from '../services/apis/api-functions';
 import '../styles/exchange.css';
 import { toFixedDigit } from '../utils/functions';
@@ -59,7 +59,7 @@ const Exchange = () => {
     }, [selectedBottomCurrency]);
 
     const setAndGetAmount = async (isFirst, amount) => {
-        if (amount !== 0) {
+        if (amount != 0) {
             isFirst ? setEnteredAmount(amount) : setConvertedAmount(amount);
             const responseGetAmount = await serviceConnectionConvertCurrencyAndAmount(isFirst ? selectedTopCurrency : selectedBottomCurrency, isFirst ? selectedBottomCurrency : selectedTopCurrency, true, amount);
             if (responseGetAmount?.status === 401) {
@@ -105,17 +105,21 @@ const Exchange = () => {
     return (
         <>
             <div className="container">
-                <div className="container-label">
-                    <p className="label">
-                        Currency Exchange Prototype
-                    </p>
-                    <img src={rocket} width={25} height={25} className="img-rocket" alt="rocket" />
-                </div>
+                <Title
+                    fieldStyle={"container-label"}
+                    titleStyle={"label"}
+                    text={"Currency Exchange Prototype"}
+                    imgSrc={rocket}
+                    imgWidth={25}
+                    imgHeight={25}
+                    imgStyle={"img-rocket"}
+                    imgAlt={rocket} />
                 <div className="container-table">
                     <div className="container-table-section">
                         <span className="field-section">
                             <span>
-                                <ComboBox data={initialCurrencies}
+                                <ComboBox
+                                    data={initialCurrencies}
                                     val={selectedTopCurrency}
                                     handleChange={(event) => handleChange(event, 'top')}
                                     fieldComboBox={"field-combo-box"}
@@ -124,7 +128,6 @@ const Exchange = () => {
                             </span>
                             <Input
                                 onChange={(event) => setAndGetAmount(true, event?.target?.value)}
-                                placeHolder=""
                                 fieldInput={"input input-top"}
                                 text={"-"}
                                 value={enteredAmount ? toFixedDigit(enteredAmount, 2) : 0}
@@ -149,7 +152,8 @@ const Exchange = () => {
                     <div className="container-table-section container-table-bottom">
                         <span className="field-section">
                             <span>
-                                <ComboBox data={initialCurrencies}
+                                <ComboBox
+                                    data={initialCurrencies}
                                     val={selectedBottomCurrency}
                                     handleChange={(event) => handleChange(event, 'bottom')}
                                     fieldComboBox={"field-combo-box"}
@@ -165,9 +169,11 @@ const Exchange = () => {
                         </span>
                     </div>
                 </div>
-                <button className="btn" onClick={setExchange}>
-                    <span className="btn-text">Exchange</span>
-                </button>
+                <Button
+                    btnStyle={"btn"}
+                    onClick={setExchange}
+                    textStyle={"btn-text"}
+                    text={"Exchange"} />
             </div>
         </>
     )

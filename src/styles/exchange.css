@@ -98,7 +98,8 @@
 .txt-error{
     font-size: 14px;
     color: #A31401;
-    padding: 10px 0px 0px 0px;
+    position: absolute;
+    padding-top: 10px;
 }
 .btn {
     width: 110px;
