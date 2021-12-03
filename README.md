@@ -16,7 +16,7 @@ In the project directory, you can run:
 
 ### `npm test run`
 
-Runs test cases in the development mode.\
+Runs test cases in the development mode.
 
 
 ## Demo URL: https://currency-exchange-prototype.web.app/
